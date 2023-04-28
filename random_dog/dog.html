@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Dog Image Generator</title>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        background-color: #333333;
+        color: #ffffff;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .btn {
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        color: #333333;
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 20px;
+        width: 200px;
+      }
+      .dog-image {
+        display: block;
+        margin: 0 auto;
+        margin-top: 20px;
+        border: 5px solid #ffffff;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Random Dog Image Generator</h1>
+      <img class="dog-image" id="dog-image" src="https://via.placeholder.com/600x400.png?text=Click+the+button+to+get+a+dog+image" alt="Dog Image Placeholder" />
+      <button class="btn" onclick="generateDogImage()">Generate Dog Image</button>
+    </div>
+    <script>
+      function generateDogImage() {
+        fetch("https://dog.ceo/api/breeds/image/random")
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("dog-image").src = data.message;
+          });
+      }
+    </script>
+  </body>
+</html>
